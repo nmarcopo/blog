@@ -1,27 +1,32 @@
-<!DOCTYPE html
-    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "//www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-    <!-- Styling referenced from Andrej Karpathy's blog post at https://cs.stanford.edu/people/karpathy/advice.html -->
+<!DOCTYPE html>
+
 <head>
     <title>Nick's Tech Blog</title>
-    <link href='//fonts.googleapis.com/css?family=Roboto:400,300,500' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
     <base target="_blank">
     <meta name="google-site-verification" content="pI8oex9LTnhvZbRgJzgsKTI6hL3qMuJ9xRn3KcDE7H0" />
 </head>
 
 <body>
-    <div id="container">
-        <h1 align="center" id="title"></h1>
-        <div class="chunk" style="background-color:#DFE6EC">
-            <ul>
-                <li><a href="articles/vscode/" target="_self">Better VSCode for Old Chromebooks</li>
-            </ul>
+    <div class="container" style="max-width: 500px">
+        <h2 class="text-center mt-4" id="title"></h2>
+        <div class="card mb-3" style="background-color:#DFE6EC">
+            <div class="card-header">Articles</div>
+            <div class="card-body p-2">
+                <ul class="m-0">
+                    <li><a href="articles/vscode/" target="_self">Better VSCode for Old Chromebooks</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="chunk" style="background-color:#ECDFE0">
-            <ul>
-                <li><a href="https://git.io/nmarcopo">Nick's GitHub</a></li>
-                <li><a href="https://nick.marcopo.li">Nick's Website</a></li>
-            </ul>
+        <div class="card mb-3" style="background-color:#ECDFE0">
+            <div class="card-header">Links</div>
+            <div class="card-body p-2">
+                <ul class="m-0">
+                    <li><a href="https://git.io/nmarcopo">Nick's GitHub</a></li>
+                    <li><a href="https://nick.marcopo.li">Nick's Website</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 </body>

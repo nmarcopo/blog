@@ -1,165 +1,266 @@
-<!DOCTYPE html
-    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "//www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <head>
     <title>Better VSCode for Old Chromebooks</title>
-    <link href='//fonts.googleapis.com/css?family=Roboto:400,300,500' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="../../main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../../bootstrap.min.css">
     <base target="_blank">
 </head>
 
 <body>
-    <div id="container">
-        <h1 id="title"></h1>
-        <div align="center" style="margin-top:-10px;">
-            <p>A guide for the poor souls without Crostini</p>
-            <p>By <a href="https://nick.marcopo.li">Nick Marcopoli</a>, March 13, 2019</p>
+
+    <div class="container" style="max-width: 775px">
+        <div class="text-center">
+            <h2 class="mt-4" id="title"></h2>
+            <div>
+                <p class="lead">A guide for the poor souls without Crostini</p>
+                <p>By <a href="https://nick.marcopo.li">Nick Marcopoli</a>, March 13, 2019</p>
+            </div>
         </div>
-        <br />
-
-        <div class="chunk" style="background-color: #DFE6EC;">
-            <h2>Intro</h2>
-            <p>
-                &emsp;I recently made the jump from a Windows laptop to a Chromebook Pixel LS, a laptop that was ahead
-                of its time. When the Pixel released, Chrome OS didn't support Android apps through the Play Store, most
-                chromebooks didn't have touch screens, and the thought of paying upwards of $1300 for a machine that
-                seemed like a glorified web browser with monster specs seemed absurd. Fortunately, things have changed
-                since then! Chromebooks have become quite capable in the past few years - full Android app support
-                coupled with the fact that most people don't need more than a web browser to do their day-to-day
-                computing has lead to Chrome OS being taken a little more seriously as a daily driver OS than before.
-                <br>
-                &emsp;The Pixel does almost everything I need. I use Google Docs for all of my word processing, the Zoom
-                Chrome app for my online courses, and I use the crosh shell for any dev work I need to do. I only missed
-                using Microsoft's Visual Studio Code as a text editor! I tried Crouton with Xiwi, which worked fine, but
-                I noticed a substantial input delay that was especially noticeable when scrolling. I hear that VSCode
-                works great on newer Chromebooks with Crostini, but the Pixel doesn't support Crostini (<a
-                    href="https://9to5google.com/2018/11/07/linux-app-support-2015-chromebook-pixel/">yet</a>) :(
-            </p>
-
-            <h2>Enter: code-server</h2>
-            <p>
-                &emsp;I stumbled across <a href="https://coder.com">coder.com</a> and thought that it could be a way for
-                me to use VSCode without Crostini. It works, but the free tier is limited in its power and storage. I
-                wanted to take advantage of the Pixel's <a
-                    href="https://en.wikipedia.org/wiki/Chromebook_Pixel#Specifications">surprisingly good specs</a>, so
-                I took a look at <a href="https://github.com/codercom/code-server">their GitHub repository</a> to see if
-                there was any way that I could host it myself. Good news - I can! They included <a
-                    href="https://github.com/codercom/code-server/releases">a binary</a> in the repository that starts
-                up a Coder server that you can access from localhost in a web browser.
-            </p>
-
-            <h2>Try 1: VPS</h2>
-            <p>
-                &emsp;I have a VPS set up on <a href="https://www.digitalocean.com/">DigitalOcean</a> that I use to run
-                some web apps. My first idea was to set up the Coder server on my VPS and access the editor from Chrome.
-                I ran the binary on the VPS, and immediately received an "out of memory" exception. Being the cheapskate
-                that I am, I pay for the $5 a month VPS. Unfortunately, the Coder server won't run on such a small
-                amount of memory. Plus, Coder's website gives you this option of running VSCode in the cloud anyway, so
-                I decided to forget using self-hosting Coder for now.
-            </p>
-
-            <h2>Try 2: Localhost</h2>
-            <p>
-                &emsp;Next, I tried just running code-server locally. After a little bit of fiddling, it works! I set up
-                the server to run on one of my open ports and I'm able to access it easily through my browser. There's a
-                few glitches here and there; for example, I can't view markdown previews in the app, and there's a few
-                extensions that don't show up in the extensions search that do on normal installs of VSCode. All in all,
-                though, it's a great way for me to use my favorite text editor while I wait for some sort of official
-                linux support for my device.
-                <br>
-                <p>
-                    <img src="images/codeOnSamus.png" alt="VSCode Running on ChromeOS" width="700px">
-                    <p align="center"><i>VSCode Running on my Chromebook</i></p>
-                </p>
-            </p>
-        </div>
-
-        <div class="chunk" style="background-color: #DFE0EC;">
-            <h2>Tutorial</h2>
-            <p>
-                Some assumptions I'm making if you're following this tutorial:
-                <ul>
-                    <li>You're in dev mode (not necessarily dev channel) and can access the "shell" within crosh</li>
-                    <li>You know how to navigate the command line interface</li>
-                    <li>You have all of the necessary packages installed (tar, python, etc.)</li>
-                    <li>You are able to execute compiled programs on your file system (if you get an error when trying,
-                        take a look at <a
-                            href="https://superuser.com/questions/1264615/permission-denied-on-chromebook-even-with-sudo">this
-                            Stack Exchange page</a>)</li>
-                </ul>
-                Let's get started:
-            </p>
-            <p>
-                <ol>
-                    <li><b>Downloading code-server</b></li>
-                    Go to the <a href="https://github.com/codercom/code-server/releases">releases section</a> of
-                    code-server's GitHub page and download the tarball for the latest release. Unpack the tarball.
-                    <li><b>Running the server</b></li>
-                    Simply run the command <code>./code-server</code> and you'll have the server up and running on its
-                    default port.
-                    <li><b>Accessing the user interface</b></li>
-                    You can navigate to localhost:[port] in your browser to check it out. See below what I get:
-                    <p align="center"><img src="images/scaryWarning.png" alt="Ahh! Scary security warning!"
-                            width="300px"></p>
-                    That's just a security warning due to the server's default use of https. Once you click "Proceed to
-                    localhost", you'll see this screen:
-                    <p align="center"><img src="images/authenticate.png" alt="Password authentication" width="300px">
-                    </p>
-                    You can find the password that code-server wants you to use in the stdout of the server you just
-                    ran. Put that in the password field and you're good to go.
-                    <li><b>Ta-Da! Better VSCode on your Chromebook.</b></li>
-                    You will now see the familiar VSCode interface! You can use VSCode like normal, minus some small
-                    bugs like I mentioned earlier.
-                    <li><b>Removing password authentication and HTTPS</b></li>
-                    To remove password authentication, all you need to do is add the <code>--no-auth</code> flag when
-                    you run the server. Now you won't see any security warnings or password prompts, and you'll be able
-                    to go straight into VSCode when you access the localhost port.
-                    <li><b>Starting code-server automatically when you enter crosh shell</b></li>
-                    I use the shell more often than most ChromeOS users, so maybe this won't be as big of a deal for
-                    others. I didn't want to start up the server manually each time I booted up my laptop, so I added
-                    the following lines to my <code>.bashrc</code> to start the server for me in the background whenever
-                    I open the shell:
+        <div class="px-0">
+            <div class="card bg-light mb-3">
+                <div class="card-body p-2">
+                    <h4>Intro</h4>
                     <p>
-                        <code style="display:block; white-space:pre-wrap; font-size: 10pt;">
+                        &emsp;I recently made the jump from a Windows laptop to a Chromebook Pixel LS, a laptop that was
+                        ahead
+                        of its time. When the Pixel released, Chrome OS didn't support Android apps through the Play
+                        Store,
+                        most
+                        chromebooks didn't have touch screens, and the thought of paying upwards of $1300 for a machine
+                        that
+                        seemed like a glorified web browser with monster specs seemed absurd. Fortunately, things have
+                        changed
+                        since then! Chromebooks have become quite capable in the past few years - full Android app
+                        support
+                        coupled with the fact that most people don't need more than a web browser to do their day-to-day
+                        computing has lead to Chrome OS being taken a little more seriously as a daily driver OS than
+                        before.
+                        <br>
+                        &emsp;The Pixel does almost everything I need. I use Google Docs for all of my word processing,
+                        the
+                        Zoom
+                        Chrome app for my online courses, and I use the crosh shell for any dev work I need to do. I
+                        only
+                        missed
+                        using Microsoft's Visual Studio Code as a text editor! I tried Crouton with Xiwi, which worked
+                        fine,
+                        but
+                        I noticed a substantial input delay that was especially noticeable when scrolling. I hear that
+                        VSCode
+                        works great on newer Chromebooks with Crostini, but the Pixel doesn't support Crostini (<a
+                            href="https://9to5google.com/2018/11/07/linux-app-support-2015-chromebook-pixel/">yet</a>)
+                        &#128532
+                    </p>
+
+                    <h4>Enter: code-server</h4>
+                    <p>
+                        &emsp;I stumbled across <a href="https://coder.com">coder.com</a> and thought that it could be a
+                        way
+                        for
+                        me to use VSCode without Crostini. It works, but the free tier is limited in its power and
+                        storage.
+                        I
+                        wanted to take advantage of the Pixel's <a
+                            href="https://en.wikipedia.org/wiki/Chromebook_Pixel#Specifications">surprisingly good
+                            specs</a>, so
+                        I took a look at <a href="https://github.com/codercom/code-server">their GitHub repository</a>
+                        to
+                        see if
+                        there was any way that I could host it myself. Good news - I can! They included <a
+                            href="https://github.com/codercom/code-server/releases">a binary</a> in the repository that
+                        starts
+                        up a Coder server that you can access from localhost in a web browser.
+                    </p>
+
+                    <h4>Try 1: VPS</h4>
+                    <p>
+                        &emsp;I have a VPS set up on <a href="https://www.digitalocean.com/">DigitalOcean</a> that I use
+                        to
+                        run
+                        some web apps. My first idea was to set up the Coder server on my VPS and access the editor from
+                        Chrome.
+                        I ran the binary on the VPS, and immediately received an "out of memory" exception. Being the
+                        cheapskate
+                        that I am, I pay for the $5 a month VPS. Unfortunately, the Coder server won't run on such a
+                        small
+                        amount of memory. Plus, Coder's website gives you this option of running VSCode in the cloud
+                        anyway,
+                        so
+                        I decided to forget using self-hosting Coder for now.
+                    </p>
+
+                    <h4>Try 2: Localhost</h4>
+                    <p>
+                        &emsp;Next, I tried just running code-server locally. After a little bit of fiddling, it works!
+                        I
+                        set up
+                        the server to run on one of my open ports and I'm able to access it easily through my browser.
+                        There's a
+                        few glitches here and there; for example, I can't view markdown previews in the app, and there's
+                        a
+                        few
+                        extensions that don't show up in the extensions search that do on normal installs of VSCode. All
+                        in
+                        all,
+                        though, it's a great way for me to use my favorite text editor while I wait for some sort of
+                        official
+                        linux support for my device.
+                        <br>
+                        <p>
+                            <img src="images/codeOnSamus.png" alt="VSCode Running on ChromeOS" width="100%">
+                            <p class="text-center"><i>VSCode Running on my Chromebook</i></p>
+                        </p>
+                    </p>
+                </div>
+            </div>
+
+            <div class="card mb-3" style="background-color: #DFE0EC;">
+                <div class="card-body p-2">
+                    <h4>Tutorial</h4>
+                    <p>
+                        Some assumptions I'm making if you're following this tutorial:
+                        <ul class="pl-3">
+                            <li>You're in dev mode (not necessarily dev channel) and can access the "shell" within crosh
+                            </li>
+                            <li>You know how to navigate the command line interface</li>
+                            <li>You have all of the necessary packages installed (tar, python, etc.)</li>
+                            <li>You are able to execute compiled programs on your file system (if you get an error when
+                                trying,
+                                take a look at <a
+                                    href="https://superuser.com/questions/1264615/permission-denied-on-chromebook-even-with-sudo">this
+                                    Stack Exchange page</a>)</li>
+                        </ul>
+                        Let's get started:
+                    </p>
+                    <p>
+                        <ol class="pl-3">
+                            <li><b>Downloading code-server</b></li>
+                            <p>
+                                Go to the <a href="https://github.com/codercom/code-server/releases">releases
+                                    section</a> of code-server's GitHub page and download the tarball for the latest
+                                release. Unpack the tarball.
+                            </p>
+                            <li><b>Running the server</b></li>
+                            <p>
+                                Simply run the command <code>./code-server</code> and you'll have the server up and
+                                running on its default port.
+                            </p>
+                            <li><b>Accessing the user interface</b></li>
+                            <p>
+                                You can navigate to localhost:[port] in your browser to check it out. See below what I
+                                get:
+                                <p class="text-center"><img src="images/scaryWarning.png" alt="Ahh! Scary security warning!"
+                                        width="300px"></p>
+                                That's just a security warning due to the server's default use of https. Once you click
+                                "Proceed
+                                to
+                                localhost", you'll see this screen:
+                                <p class="text-center"><img src="images/authenticate.png" alt="Password authentication"
+                                        width="300px">
+                                </p>
+                                You can find the password that code-server wants you to use in the stdout of the server
+                                you
+                                just
+                                ran. Put that in the password field and you're good to go.
+                            </p>
+                            <li><b>Ta-Da! Better VSCode on your Chromebook.</b></li>
+                            <p>
+                                You will now see the familiar VSCode interface! You can use VSCode like normal, minus
+                                some
+                                small
+                                bugs like I mentioned earlier.
+                            </p>
+                            <li><b>Removing password authentication and HTTPS</b></li>
+                            <p>
+                                To remove password authentication, all you need to do is add the <code>--no-auth</code>
+                                flag
+                                when
+                                you run the server. Now you won't see any security warnings or password prompts, and
+                                you'll
+                                be
+                                able
+                                to go straight into VSCode when you access the localhost port.
+                            </p>
+                            <li><b>Starting code-server automatically when you enter crosh shell</b></li>
+                            <p>
+                                I use the shell more often than most ChromeOS users, so maybe this won't be as big of a
+                                deal
+                                for
+                                others. I didn't want to start up the server manually each time I booted up my laptop,
+                                so I
+                                added
+                                the following lines to my <code>.bashrc</code> to start the server for me in the
+                                background
+                                whenever
+                                I open the shell:
+                                <p>
+                                    <code style="display:block; white-space:pre-wrap; font-size: 10pt;">
 if ! pgrep -x "code-server" > /dev/null
 then
     nohup /path/to/server/code-server --no-auth -p 9911 >/dev/null 2>&1 &
 fi
                         </code>
+                                </p>
+                                Note that this little snippet checks to see if the server is already running before
+                                starting
+                                it.
+                                It
+                                also sets the port to something custom, gets rid of any output so that I don't see it in
+                                the
+                                shell,
+                                and lets me close the shell without worrying about the server stopping.
+                            </p>
+                            <li><b>Changing the icon</b></li>
+                            <p>
+                            The icon that shows up by default when you access code-server in the browser is blank. Let's
+                            change
+                            that to something that looks nice. Google Images search "VSCode icon" and pick something
+                            that
+                            you
+                            like. Copy that image's address. Now, access the Chrome developer tools by pressing
+                            <code>Ctrl-Shift-I</code>, and in the "Element" tab click on the "head" line.
+                            <p class="text-center"><img src="images/devTools.png" alt="Chrome Dev Tools in VSCode"
+                                    style="width:100%"></p>
+                            Right click on the "head" line and choose "Edit as HTML". Add the following line to the
+                            "head":
+                            <p class="text-center"><img src="images/iconHTML.png" alt="Adding icon" style="width:100%"></p>
+                            where the link after <code>href=</code> is the link to your image. Now, the icon of the site
+                            has
+                            changed from the blank icon to your new, custom icon.
+                            </p>
+                            <li><b>Adding VSCode to your dock</b></li>
+                            <p>
+                            The last thing you'll want to do is add VSCode to your dock. You can do this pretty easily,
+                            just
+                            click on the three dots in the top right corner of chrome, then hover over "More Tools",
+                            then
+                            click
+                            "Create Shortcut". Name the shortcut, and then it will appear in your dock. You can also
+                            search
+                            for
+                            it with all of your other apps:
+                            <p class="text-center"><img src="images/searchingCode.png"
+                                    alt="Searching for Code with all of your apps" style="width:100%"></p>
+                            You now have VSCode on your Chromebook!
+                            </p>
+                        </ol>
                     </p>
-                    Note that this little snippet checks to see if the server is already running before starting it. It
-                    also sets the port to something custom, gets rid of any output so that I don't see it in the shell,
-                    and lets me close the shell without worrying about the server stopping.
-                    <li><b>Changing the icon</b></li>
-                    The icon that shows up by default when you access code-server in the browser is blank. Let's change
-                    that to something that looks nice. Google Images search "VSCode icon" and pick something that you
-                    like. Copy that image's address. Now, access the Chrome developer tools by pressing
-                    <code>Ctrl-Shift-I</code>, and in the "Element" tab click on the "head" line.
-                    <p align="center"><img src="images/devTools.png" alt="Chrome Dev Tools in VSCode"
-                            style="width:600px"></p>
-                    Right click on the "head" line and choose "Edit as HTML". Add the following line to the "head":
-                    <p align="center"><img src="images/iconHTML.png" alt="Adding icon" style="width:500px"></p>
-                    where the link after <code>href=</code> is the link to your image. Now, the icon of the site has
-                    changed from the blank icon to your new, custom icon.
-                    <li>Adding VSCode to your dock</li>
-                    The last thing you'll want to do is add VSCode to your dock. You can do this pretty easily, just
-                    click on the three dots in the top right corner of chrome, then hover over "More Tools", then click
-                    "Create Shortcut". Name the shortcut, and then it will appear in your dock. You can also search for
-                    it with all of your other apps:
-                    <p align="center"><img src="images/searchingCode.png" alt="Searching for Code with all of your apps"
-                            style="width:500px"></p>
-                    You now have VSCode on your Chromebook!
-                </ol>
-            </p>
+                </div>
+            </div>
         </div>
 
-        <div class="chunk" style="background-color: #ECDFE0;">
-            <h2>Thanks for reading!</h2>
-            If you've made it this far, I want to thank you for reading through this little article. Thanks to Coder.com
-            for making this nifty little server. If you have any questions, feel free to contact me via <a
-                href="https://nick.marcopo.li">my website</a> or via my email that I have posted on GitHub.
+        <div class="card mb-3" style="background-color: #ECDFE0;">
+            <div class="card-body p-2">
+                <h4>Thanks for reading!</h4>
+                If you've made it this far, I want to thank you for reading through this little article. Thanks to
+                Coder.com
+                for making this nifty little server. If you have any questions, feel free to contact me via <a
+                    href="https://nick.marcopo.li">my website</a> or via my email that I have posted on GitHub.
+            </div>
         </div>
 
+    </div>
     </div>
 </body>
 
