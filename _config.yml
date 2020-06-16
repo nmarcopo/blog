@@ -9,7 +9,7 @@ url: "https://nmarcopo.github.io/" # the base hostname & protocol for your site
 author:
   fullname: Nicholas Marcopoli
   github: nmarcopo
-  # disqus: your_disqus_forum_shortname
+  disqus: nmarcopo
 
 # google_analytics: 'UA-XXXXXXXX-X'
 
