@@ -1,38 +1,16 @@
-<!DOCTYPE html>
+---
+layout: page
+sitemap:
+  priority: 0.9
+---
 
-<head>
-    <title>Nick's Tech Blog</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
-    <base target="_blank">
-    <meta name="google-site-verification" content="pI8oex9LTnhvZbRgJzgsKTI6hL3qMuJ9xRn3KcDE7H0" />
-</head>
-
-<body>
-    <div class="container" style="max-width: 500px">
-        <h2 class="text-center mt-4" id="title"></h2>
-        <div class="card mb-3" style="background-color:#DFE6EC">
-            <div class="card-header">Articles</div>
-            <div class="card-body p-2">
-                <ul class="m-0">
-                    <li><a href="articles/vscode/" target="_self">Better VSCode for Old Chromebooks</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="card mb-3" style="background-color:#ECDFE0">
-            <div class="card-header">Links</div>
-            <div class="card-body p-2">
-                <ul class="m-0">
-                    <li><a href="https://git.io/nmarcopo">Nick's GitHub</a></li>
-                    <li><a href="https://nick.marcopo.li">Nick's Website</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</body>
-
-<script type="text/javascript">
-    document.getElementById("title").textContent = document.title;
-</script>
-
-</html>
+<ul class="list-posts">
+    {% for post in site.posts %}
+        <li class="post-teaser">
+            <a href="{{ post.url | prepend: site.baseurl }}">
+                <span class="post-teaser__title">{{ post.title }}</span>
+                <span class="post-teaser__date">{{ post.date | date: "%d %B %Y" }}</span>
+            </a>
+        </li>
+    {% endfor %}
+</ul>
