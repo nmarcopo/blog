@@ -4,7 +4,7 @@ description: >
   Nick Marcopoli's Blog
 
 baseurl: "/blog" # the subpath of your site, e.g. /blog/
-url: "https://nmarcopo.github.io/blog" # the base hostname & protocol for your site
+url: "https://nmarcopo.github.io/" # the base hostname & protocol for your site
 
 author:
   fullname: Nicholas Marcopoli
@@ -23,3 +23,5 @@ exclude: ["README.md", "README.html"]
 # Build settings
 highlighter: null
 markdown: kramdown
+plugins:
+  - jekyll-sitemap
