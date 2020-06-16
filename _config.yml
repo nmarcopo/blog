@@ -1,7 +1,7 @@
 # Site settings
 title: Nick Marcopoli's Blog
 description: >
-  Nick Marcopoli's Blog
+  Nick Marcopoli's Tech Blog
 
 baseurl: "/blog" # the subpath of your site, e.g. /blog/
 url: "https://nmarcopo.github.io/" # the base hostname & protocol for your site
