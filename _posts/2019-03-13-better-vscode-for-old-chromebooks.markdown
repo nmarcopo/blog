@@ -25,7 +25,7 @@ I have a VPS set up on [DigitalOcean](https://www.digitalocean.com/) that I use 
 Next, I tried just running code-server locally. After a little bit of fiddling, it works! I set up the server to run on one of my open ports and I'm able to access it easily through my browser. There's a few glitches here and there; for example, I can't view markdown previews in the app, and there's a few extensions that don't show up in the extensions search that do on normal installs of VSCode. All in all, though, it's a great way for me to use my favorite text editor while I wait for some sort of official linux support for my device.
 
 <div class="imgcap">
-<img src="{{ site.baseurl }}/assets/img/1/codeOnSamus.png">
+<img src="/{{ site.baseurl }}/assets/img/1/codeOnSamus.png">
 <div class="thecap">VSCode Running on my Chromebook</div>
 </div>
 
@@ -55,11 +55,11 @@ Let's get started:
 
     You can navigate to localhost:[port] in your browser to check it out. See below what I get:
 
-    ![]({{ site.baseurl }}/assets/img/1/scaryWarning.png)
+    ![](/{{ site.baseurl }}/assets/img/1/scaryWarning.png)
 
     That's just a security warning due to the server's default use of https. Once you click "Proceed to localhost", you'll see this screen:
 
-    ![]({{ site.baseurl }}/assets/img/1/authenticate.png)
+    ![](/{{ site.baseurl }}/assets/img/1/authenticate.png)
 
     You can find the password that code-server wants you to use in the stdout of the server you just ran. Put that in the password field and you're good to go.
 
@@ -92,11 +92,11 @@ Let's get started:
 
     The icon that shows up by default when you access code-server in the browser is blank. Let's change that to something that looks nice. Google Images search "VSCode icon" and pick something that you like. Copy that image's address. Now, access the Chrome developer tools by pressing `Ctrl-Shift-I`, and in the "Element" tab click on the "head" line.
 
-    ![]({{ site.baseurl }}/assets/img/1/devTools.png)
+    ![](/{{ site.baseurl }}/assets/img/1/devTools.png)
     
     Right click on the "head" line and choose "Edit as HTML". Add the following line to the "head":
 
-    ![]({{ site.baseurl }}/assets/img/1/iconHTML.png)
+    ![](/{{ site.baseurl }}/assets/img/1/iconHTML.png)
 
     where the link after href= is the link to your image. Now, the icon of the site has changed from the blank icon to your new, custom icon.
 
@@ -105,7 +105,7 @@ Let's get started:
 
     The last thing you'll want to do is add VSCode to your dock. You can do this pretty easily, just click on the three dots in the top right corner of chrome, then hover over "More Tools", then click "Create Shortcut". Name the shortcut, and then it will appear in your dock. You can also search for it with all of your other apps:
 
-    ![]({{ site.baseurl }}/assets/img/1/searchingCode.png)
+    ![](/{{ site.baseurl }}/assets/img/1/searchingCode.png)
 
     You now have VSCode on your Chromebook! Note that you can also use [Applicationize.me](https://applicationize.me/now) for this, too.
 
