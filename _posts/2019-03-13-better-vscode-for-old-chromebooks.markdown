@@ -3,7 +3,6 @@ layout: post
 title:  "Better VSCode for Old Chromebooks"
 subtitle: "A guide for the poor souls without Crostini"
 date:   2019-03-13 23:56:45
-categories: [tools, productivity]
 ---
 
 # Intro
