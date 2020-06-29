@@ -8,7 +8,7 @@ layout: default
     {% for post in site.posts %}
         {% if post.categories contains page.category %}
             <li class="post-teaser">
-                <a href="{{ post.url | prepend: site.baseurl }}">
+                <a href="/{{ post.url | prepend: site.baseurl }}">
                     <span class="post-teaser__title">{{ post.title }}</span>
                     <span class="post-teaser__date">{{ post.date | date: "%d %B %Y" }}</span>
                 </a>
